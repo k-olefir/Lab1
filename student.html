@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students Table</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000">
+</head>
+<body>
+  <header class="header">
+      <div class="logo"><a href="student.html">CMS</a></div>
+      <div class="header-right">
+        <div class="notification"> 
+            🔔 <span class="notif-badge" style="display:none;"></span>
+              <div class="notif-dropdown">
+                  <div class="notif-item">
+                      <img src="avatar1.jpg" alt="Avatar">
+                      <div class="notif-text">
+                          <strong>Ruslan Yavir</strong>
+                          <p>Nice site! I like it.</p>
+                      </div>
+                  </div>
+                  <div class="notif-item">
+                      <img src="avatar2.jpg" alt="Avatar">
+                      <div class="notif-text">
+                          <strong>Xie Lian</strong>
+                          <p>Body in abyss, heart in paradise.</p>
+                      </div>
+                  </div>
+                  <div class="notif-item">
+                      <img src="avatar3.jpg" alt="Avatar">
+                      <div class="notif-text">
+                          <strong>Polyna</strong>
+                          <p>Let's go to the Horned Frog</p>
+                      </div>
+                  </div>
+              </div>
+        </div>   
+        <div class="user">
+          Kseniia Olefir <img src="user-icon.jpg" alt="User">
+          <div class="user-dropdown">
+            <button>Profile</button>
+            <button>LogOut</button>
+          </div>
+        </div>
+    </div>
+      <button id="burger-menu" class="burger-menu">☰</button>
+  </header>
+  <nav class="sidebar">
+      <a href="index.html">Dashboard</a>
+      <a href="student.html" class="active">Students</a>
+      <a href="tasks.html">Tasks</a>
+  </nav>
+  <div class="container">
+      <h1>Students</h1>
+      <button id="add-student">+ Add Student</button>
+      <table id="students-table">
+          <thead>
+              <tr>
+                  <th>
+                    <label>
+                        <input type="checkbox" id="select-all">Select All
+                    </label>
+                </th>
+                  <th>Group</th>
+                  <th>Name</th>
+                  <th>Gender</th>
+                  <th>Birthday</th>
+                  <th>Status</th>
+                  <th>Options</th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+
+      <div class="paging-nav">
+        <a href="#" class="selected-page">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">&gt;</a>
+    </div>
+  </div>
+
+  
+
+  <div id="student-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title">Add Student</h2>
+        <form id="student-form">
+            <input type="hidden" id="student-id">
+            
+            <label>Group:
+                <select id="group" required>
+                    <option value="PZ-21">PZ-21</option>
+                    <option value="PZ-22">PZ-22</option>
+                    <option value="PZ-23">PZ-23</option>
+                    <option value="PZ-24">PZ-24</option>
+                    <option value="PZ-25">PZ-25</option>
+                    <option value="PZ-26">PZ-26</option>
+                </select>
+            </label>
+            <label>First name: <input type="text" id="first-name"></label>
+            <label>Last name: <input type="text" id="last-name"></label>
+            <label>Gender:
+                <select id="gender" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </label>
+            <label>Birthday: <input type="date" id="birthday" required></label>
+            <label>Status:
+                <select id="status" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </label>
+            <button type="submit" id="save-button">Save</button>
+            <button type="button" id="cancel">Cancel</button>
+        </form>
+    </div>
+</div>
+
+  <div id="delete-modal" class="modal">
+      <div class="modal-content">
+          <span id="delete-student-name"></span>
+          <div class="modal-buttons">
+              <button id="confirm-delete">OK</button>
+              <button id="cancel-delete">Cancel</button>
+          </div>
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

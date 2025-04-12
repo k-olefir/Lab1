@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS - Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#000000">
+</head>
+<body>
+  <header class="header">
+      <div class="logo"><a href="student.html">CMS</a></div>
+      <div class="header-right">
+        <div class="notification"> 
+            🔔 <span class="notif-badge" style="display:none;"></span>
+              <div class="notif-dropdown">
+                  <div class="notif-item">
+                      <img src="avatar1.jpg" alt="Avatar">
+                      <div class="notif-text">
+                          <strong>Ruslan Yavir</strong>
+                          <p>Nice site! I like it.</p>
+                      </div>
+                  </div>
+                  <div class="notif-item">
+                      <img src="avatar2.jpg" alt="Avatar">
+                      <div class="notif-text">
+                          <strong>Xie Lian</strong>
+                          <p>Body in abyss, heart in paradise.</p>
+                      </div>
+                  </div>
+                  <div class="notif-item">
+                      <img src="avatar3.jpg" alt="Avatar">
+                      <div class="notif-text">
+                          <strong>Polyna</strong>
+                          <p>Let's go to the Horned Frog</p>
+                      </div>
+                  </div>
+              </div>
+        </div>   
+        <div class="user">
+          Kseniia Olefir <img src="user-icon.jpg" alt="User">
+          <div class="user-dropdown">
+            <button>Profile</button>
+            <button>LogOut</button>
+          </div>
+        </div>
+      <button id="burger-menu" class="burger-menu">☰</button>
+  </header>
+  <nav class="sidebar">
+      <a href="index.html" class="active">Dashboard</a>
+      <a href="student.html">Students</a>
+      <a href="tasks.html">Tasks</a>
+  </nav>
+  <div class="container">
+      <h1>Welcome to CMS</h1>
+      <p>Select a section from the sidebar.</p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then(() => console.log("✅ Service Worker registered"))
+        .catch((err) => console.error("❌ Service Worker registration failed", err));
+    }
+  </script>
+</body>
+</html>
