@@ -112,7 +112,9 @@
                     <option value="F">Female</option>
                 </select>
             </label>
-            <label>Birthday: <input type="date" id="birthday" required></label>
+            <label>Birthday: <input type="date" id="birthday" name="birthdate" required>
+                <span class="error" id="date-error"></span>
+            </label>
             <label>Status:
                 <select id="status" required>
                     <option value="active">Active</option>

@@ -75,6 +75,21 @@ document.addEventListener("DOMContentLoaded", () => {
       error.textContent = message;
       element.insertAdjacentElement("afterend", error);
     }
+
+    function isValidPastDate(dateString) {
+        if (!dateString) return false;
+    
+        const selectedDate = new Date(dateString);
+        if (isNaN(selectedDate.getTime())) return false; // Некоректна дата
+    
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Початок сьогоднішнього дня
+
+       // console.log("Selected Date:", selectedDate.toISOString());
+        //console.log("Today:", today.toISOString());
+    
+        return selectedDate < today;
+    }
   
       // Відкриття модального вікна для редагування студента
       studentTableBody.addEventListener("click", (e) => {
@@ -132,9 +147,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   
       if (!date_birth.value) {
-          showError(date_birth, "Please enter your birthday");
+          showError(date_birth, "Please enter right birthday");
           isValid = false;
       }
+
+    const dateValue = date_birth.value
+    if (!isValidPastDate(dateValue)) {
+        showError(date_birth, "Birthday must be in the past and correct.");
+        isValid = false;
+    }
   
       if (!isValid) return;
   
