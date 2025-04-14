@@ -91,6 +91,25 @@ document.addEventListener("DOMContentLoaded", () => {
         return selectedDate < today;
     }
 
+    function getStudentsFromTable() {
+      const rows = studentTableBody.querySelectorAll("tr");
+      const students = [];
+    
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        students.push({
+          group: cells[1].textContent.trim(),
+          firstName: cells[2].textContent.trim().split(" ")[0],
+          lastName: cells[2].textContent.trim().split(" ").slice(1).join(" "),
+          gender: cells[3].textContent.trim(),
+          birthday: cells[4].textContent.trim(),
+          status: cells[5].querySelector(".status").classList[1] || ""
+        });
+      });
+    
+      return students;
+    }
+
     if (addStudentBtn && studentModal) {
       addStudentBtn.addEventListener("click", () => {
           document.getElementById("modal-title").textContent = "Add Student";
@@ -205,7 +224,9 @@ document.addEventListener("DOMContentLoaded", () => {
               `;
               studentTableBody.insertAdjacentHTML("beforeend", newRowHTML);
           }
-  
+          alert("Працює додавання!");
+          const allStudents = getStudentsFromTable();
+          console.log("Current students:", JSON.stringify(allStudents, null, 2));
           studentModal.style.display = "none";
           studentForm.reset();
           editingRow = null; // Скидаємо змінну
