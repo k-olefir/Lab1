@@ -90,6 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
     
         return selectedDate < today;
     }
+
+    if (addStudentBtn && studentModal) {
+      addStudentBtn.addEventListener("click", () => {
+          document.getElementById("modal-title").textContent = "Add Student";
+          studentForm.reset(); // очищення форми
+          editingRow = null; // вказуємо, що додаємо, а не редагуємо
+          studentModal.style.display = "block";
+      });
+  }
   
       // Відкриття модального вікна для редагування студента
       studentTableBody.addEventListener("click", (e) => {
@@ -114,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
               document.getElementById("status").value = status;
   
               editingRow = row; // Зберігаємо поточний рядок
+              document.getElementById("modal-title").textContent = "Edit Student";
               studentModal.style.display = "block";
           }
       });
@@ -265,12 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cancelDeleteBtn.addEventListener("click", () => {
             deleteModal.style.display = "none";
             selectedRows = [];
-        });
-    }
-  
-    if (addStudentBtn && studentModal) {
-        addStudentBtn.addEventListener("click", () => {
-            studentModal.style.display = "block";
         });
     }
     }
