@@ -224,7 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
               `;
               studentTableBody.insertAdjacentHTML("beforeend", newRowHTML);
           }
-          alert("Працює додавання!");
           const allStudents = getStudentsFromTable();
           console.log("Current students:", JSON.stringify(allStudents, null, 2));
           studentModal.style.display = "none";
