@@ -6,12 +6,11 @@ const CACHE_NAME = "pwa-cache-v1";
 const ASSETS = [
   "/",                      // Головна сторінка
   "/index.html",            // HTML-файл
+  "/students.html",            // HTML-файл
   "/style.css",             // CSS-стилі
   "/script.js",             // Головний JavaScript-файл
-  "/icons",                 // ❌ Некоректно: "icons" - це папка, її не можна кешувати напряму
-// загалом так, але у мене не хотіло кешувати без цієї папки, якщо у вас кешує без додаткового вказування, то не додавайте її
-  "/icons/icons.128.png",   // Іконка 128px
-  "/icons/icons.512.png",   // Іконка 512px
+  "/icon128.png",   // Іконка 128px
+  "/icon512.png",   // Іконка 512px
 ];
 
 // Подія встановлення Service Worker
