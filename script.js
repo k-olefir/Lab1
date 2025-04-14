@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmDeleteBtn = document.getElementById("confirm-delete");
     const cancelDeleteBtn = document.getElementById("cancel-delete");
     const deleteStudentNameSpan = document.getElementById("delete-student-name");
+
   
     let selectedRows = [];
   
@@ -98,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rows.forEach(row => {
         const cells = row.querySelectorAll("td");
         students.push({
+          id: row.dataset.id || "",
           group: cells[1].textContent.trim(),
           firstName: cells[2].textContent.trim().split(" ")[0],
           lastName: cells[2].textContent.trim().split(" ").slice(1).join(" "),
@@ -141,6 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
               document.getElementById("birthday").value = birthday;
               document.getElementById("status").value = status;
   
+              const studentId = row.dataset.id;
+              document.getElementById("student-id").value = studentId;
               editingRow = row; // Зберігаємо поточний рядок
               document.getElementById("modal-title").textContent = "Edit Student";
               studentModal.style.display = "block";
@@ -157,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
       let isValid = true;
       const namePattern = /^[A-Za-zА-Яа-яІіЇїЄє']{2,30}$/;
+      const PriseForPolytechnick = /^[A-Za-z0-9._-]+@lpnu\.ua$/;
   
       // Очистити попередні помилки
       [name_first, name_last, date_birth].forEach(input => {
@@ -165,9 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
           if (error && error.classList.contains("error")) error.remove();
       });
   
-      if (!namePattern.test(name_first.value.trim())) {
-          showError(name_first, "Invalid first name");
-          isValid = false;
+      
+
+      if(PriseForPolytechnick.test(name_first.value.trim())){
+        alert("Hello Polytechnic");
       }
   
       if (!namePattern.test(name_last.value.trim())) {
@@ -204,8 +210,10 @@ document.addEventListener("DOMContentLoaded", () => {
               editingRow.children[5].querySelector(".status").className = `status ${status}`;
           } else {
               // Додаємо нового студента
+              const newId = Date.now();
               const newRowHTML = `
-                <tr>
+
+                <tr data-id="${newId}">
                   <td>
                       <label>
                           <input type="checkbox" class="row-checkbox"> Select
